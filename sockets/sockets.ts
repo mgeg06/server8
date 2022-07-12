@@ -11,6 +11,18 @@ export const mensaje = (cliente: Socket, io: socketIO.Server) =>
 {
     cliente.on('mensaje', (payload: { de: string, cuerpo: string}) => {
         console.log('Mensaje recibido', payload);
+        
         io.emit('mensaje-nuevo', payload);
+    })
+}
+
+
+//configurando al usuario que se esta reistrando 
+export const configurarUsuario = (cliente: Socket, io: socketIO.Server) =>
+{
+    cliente.on('configurar-usuario', (payload: { nombre: string, cuerpo: string}) => {
+        console.log('Bienvenido Usuario', payload);
+        
+       // io.emit('mensaje-nuevo', payload);
     })
 }
