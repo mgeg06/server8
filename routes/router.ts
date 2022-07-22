@@ -3,6 +3,20 @@ import { Socket } from "socket.io";
 import Server from '../classes/server';
 const router = Router();
 const sockets:any=null;
+
+/////////
+router.get('/mensajes',(req: Request, res: Response) =>
+{
+    res.json(
+        {
+        ok:true,
+        mensaje: 'Todo Esta Bien'
+    });
+})
+
+
+////////////
+
 router.get('/mensajes',(req: Request, res: Response) =>
 {
     res.json(
