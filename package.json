@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Salim Rafael Castro Ortiz",
+  "author": "Maria Guadalupe Espinoza Garcia",
   "license": "ISC",
   "dependencies": {
     "body": "^5.1.0",
