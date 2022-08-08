@@ -1,58 +1,57 @@
-import { Usuario } from "./usuario";
+import { Usuario } from "./Usuario";
 
-export class UsuariosLista{
+export class UsuariosLista {
+private lista: Usuario[] = [];
 
-    private lista: Usuario[] = [];
+constructor() {}
 
-    constructor(){ }
+public agregar (usuario: Usuario){
 
-        public agregar(usuario:Usuario){
+    this.lista.push(usuario);
+    console.log(this.lista);
+    return usuario;
+}
 
-            this.lista.push( usuario );
-            console.log( this.lista);
-            return usuario
-        }
-   
-        public actualizarNombre(id: string, nombre: string){
+    public actualizarNombre (id: string, nombre: string){
+        for(let usuario of this.lista){
 
-            for( let usuario of this.lista){
-
-                if( usuario.id === id){
-                    usuario.nombre = nombre;
-                    break;
-                }
+            if(usuario.id === id){
+                usuario.nombre = nombre;
+                break;
             }
-            console.log('===== Actualizar usuario =====');
-            console.log( this.lista );
         }
-        
-        public getLista()
-       {
-        return this.lista;
-       }
-       
-       public getUsuario( id: string ){
 
-        return this.lista.find( usuario => usuario.id === id);
-       }
+        console.log('==== Actualizando usuario ====');
+        console.log(this.lista);
 
-       public getUsuariosEnSala( sala: string){
+    }
+   //Obtener listacod
+    public getLista(){
+        return this.lista.filter( usuario => usuario.nombre !== 'sin-nombre');
 
-        return this.lista.filter( usuario => usuario.sala === sala);
-       }
+    }
+     //
 
-       public borrarUsuario(id: string){
+    public getUsuario(id: string){
+        return this.lista.find( Usuario => Usuario.id === id);
+   
+    }
+ //
 
-        const tempUsuario = this.getUsuario( id );
+    public getUsuariosEnSala( sala: string){
+        return this.lista.filter(Usuario => Usuario.sala === sala);
+   
+    }
 
-        this.lista = this.lista.filter((usuario) => usuario.id !=id);
+    //borrar usuario
+    public borrarUsuario(id: string)
+    {
 
-        //console.log( this.lista );
-
+        const tempUsuario = this.getUsuario(id);
+        this.lista = this.lista.filter(usuario =>  usuario.id !== id)
+        // console.log(this.lista);
         return tempUsuario;
-
-       }
         
-
+    }
 
 }
